@@ -1,0 +1,40 @@
+/* Alert/Warning Hover Effects */
+.vulnerability-status.status-vulnerable:hover {
+    background: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.level-high:hover {
+    background: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+.finding-item.critical:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+    transform: translateX(5px);
+}
+
+/* Security Links */
+.security-link {
+    color: var(--matrix-green);
+    text-decoration: none;
+    position: relative;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.security-link.warning:hover {
+    color: #ff4444;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+.security-link.alert {
+    color: #ff4444;
+}
+
+.security-link.alert:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+} 
