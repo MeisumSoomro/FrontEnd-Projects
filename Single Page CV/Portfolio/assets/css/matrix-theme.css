@@ -1,0 +1,35 @@
+:root {
+  /* Core Colors */
+  --matrix-black: #000000;
+  --matrix-green: #00FF41;
+  --cyber-orange: #FF6B00;
+  --secondary-green: #39FF14;
+  
+  /* Supporting Colors */
+  --dark-gray: #1A1A1A;
+  --light-gray: #2C2C2C;
+  --neon-blue: #0A4FFF;
+  
+  /* Effects */
+  --matrix-shadow: 0 0 10px var(--matrix-green);
+  --orange-glow: 0 0 15px var(--cyber-orange);
+  
+  /* Typography */
+  --main-font: 'Courier New', monospace;
+  --matrix-font: 'Matrix Code', monospace;
+  
+  /* Transitions */
+  --smooth-transition: all 0.3s ease;
+  
+  /* Layout */
+  --header-height: 80px;
+  --footer-height: 60px;
+  --container-width: 1200px;
+}
+
+/* Base styles */
+body {
+  background-color: var(--matrix-black);
+  color: var(--matrix-green);
+  font-family: var(--main-font);
+} 

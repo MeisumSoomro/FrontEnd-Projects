@@ -1,0 +1,155 @@
+/* Base Link Styles */
+.security-link, 
+.project-link,
+.nav-links a,
+.social-link {
+    color: var(--matrix-green);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.security-link:hover, 
+.project-link:hover,
+.nav-links a:hover,
+.social-link:hover {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+    transform: translateY(-2px);
+}
+
+/* Warning Links */
+.security-link.warning {
+    color: var(--matrix-green);
+}
+
+.security-link.warning:hover {
+    color: var(--matrix-green);
+    text-shadow: 0 0 15px var(--matrix-green), 0 0 30px var(--matrix-green);
+    background: rgba(0, 255, 65, 0.1);
+}
+
+/* Alert Links */
+.security-link.alert {
+    color: var(--matrix-green);
+}
+
+.security-link.alert:hover {
+    color: var(--matrix-green);
+    text-shadow: 0 0 15px var(--matrix-green);
+    background: rgba(0, 255, 65, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+/* Certificate Verification Links */
+.cert-details .security-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--matrix-green);
+    border-radius: 4px;
+}
+
+.cert-details .security-link:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+/* Social Links */
+.social-links .social-link {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+.social-links .social-link:hover {
+    transform: translateY(-3px);
+    animation: pulseGlow 2s infinite;
+}
+
+/* Navigation Links */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--matrix-green);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+/* Glow Animation */
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 5px var(--matrix-green);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--matrix-green), 0 0 30px var(--matrix-green);
+    }
+    100% {
+        text-shadow: 0 0 5px var(--matrix-green);
+    }
+}
+
+/* Project Card Links */
+.project-links .project-link {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--matrix-green);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-links .project-link:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+/* Tool Links */
+.tool-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tool-links .security-link {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--matrix-green);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.tool-links .security-link:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: transparent;
+}
+
+/* Secure Channel Links */
+.channel-list .security-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.channel-list .security-link:hover {
+    background: rgba(0, 255, 65, 0.1);
+    padding-left: 1rem;
+}
+
+/* Active Link State */
+.security-link.active,
+.project-link.active,
+.nav-links a.active {
+    text-shadow: 0 0 10px var(--matrix-green);
+    background: rgba(0, 255, 65, 0.1);
+} 

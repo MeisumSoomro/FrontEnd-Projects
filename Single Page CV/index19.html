@@ -1,0 +1,3322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Executive Portfolio - Richard J. Blackwell | Global CEO & Board Member">
+    <meta name="author" content="Richard J. Blackwell">
+    <title>Richard J. Blackwell • Global Executive Leadership</title>
+    
+    <style>
+        /* Theme Variables */
+        :root[data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #0F172A;
+            --bg-tertiary: #1E293B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --text-tertiary: #64748B;
+            --accent: #00FF88;
+            --accent-transparent: rgba(0,255,136,0.1);
+            --border: rgba(255,255,255,0.1);
+            --card-bg: rgba(255,255,255,0.03);
+        }
+
+        :root[data-theme="light"] {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #F1F5F9;
+            --text-primary: #0F172A;
+            --text-secondary: #334155;
+            --text-tertiary: #64748B;
+            --accent: #2563EB;
+            --accent-transparent: rgba(37,99,235,0.1);
+            --border: rgba(0,0,0,0.1);
+            --card-bg: rgba(0,0,0,0.02);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Progress Indicator */
+        #progress-container {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--border);
+            z-index: 1000;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .progress-stats {
+            position: fixed;
+            top: 90px;
+            right: 40px;
+            background: var(--bg-secondary);
+            padding: 8px 15px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            font-family: Inter, Arial;
+            color: var(--text-secondary);
+            font-size: 12px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced Theme Toggle Animation */
+        .theme-toggle {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--accent-transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .theme-toggle:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .theme-icon {
+            position: relative;
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-icon.rotate {
+            transform: rotate(360deg);
+        }
+
+        .theme-text {
+            position: relative;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .theme-text.fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Theme Transition Effects */
+        .theme-transition * {
+            transition: background-color 0.5s ease,
+                        color 0.5s ease,
+                        border-color 0.5s ease,
+                        box-shadow 0.5s ease;
+        }
+
+        /* Enhanced Focus States */
+        .theme-toggle:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--accent-transparent);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .theme-toggle:active .theme-icon {
+            animation: pulse 0.3s ease;
+        }
+
+        /* Enhanced Visual Feedback Styles */
+        /* Navigation Link Hover Effects */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Theme Toggle Animation */
+        .theme-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--accent-transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .theme-toggle:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .theme-icon {
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-icon.rotate {
+            transform: rotate(360deg);
+        }
+
+        /* Active Section Indicator */
+        .nav-link.active {
+            background: var(--accent-transparent);
+            color: var(--accent) !important;
+        }
+
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .theme-toggle:active {
+            animation: pulse 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Smooth Transitions */
+        * {
+            transition: background-color 0.3s ease,
+                       color 0.3s ease,
+                       border-color 0.3s ease,
+                       transform 0.3s ease,
+                       opacity 0.3s ease;
+        }
+
+        /* Enhanced Focus States */
+        .nav-link:focus,
+        .theme-toggle:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        /* Enhanced Timeline Visual Feedback */
+        /* Timeline Card Hover Effects */
+        .timeline-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .timeline-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* Metric Card Animation */
+        .metric-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .metric-value {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .metric-card:hover .metric-value {
+            transform: scale(1.1);
+            color: var(--accent) !important;
+        }
+
+        /* Year Label Effects */
+        .year-label {
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .year-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .year-label:hover::after {
+            width: 100%;
+        }
+
+        /* Achievement List Animation */
+        .achievement-list li {
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .achievement-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: var(--accent);
+        }
+
+        .achievement-list li:hover {
+            transform: translateX(10px);
+            color: var(--accent);
+        }
+
+        .achievement-list li:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Active Timeline Section */
+        .timeline-card.active {
+            border-left: 4px solid var(--accent);
+            background: rgba(0,255,136,0.05);
+        }
+
+        .timeline-card.active .year-label {
+            color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Section Transition Effects */
+        .section-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive Cards */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, var(--accent-transparent), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .interactive-card:hover::after {
+            transform: translateX(100%);
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Hover Indicators */
+        .hover-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 20px;
+            font-size: 12px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .interactive-card:hover .hover-indicator {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navigation Bar with Active States -->
+    <table width="100%" bgcolor="var(--bg-secondary)" cellspacing="0" cellpadding="15" 
+           style="position: fixed; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+                  backdrop-filter: blur(10px);">
+        <tr>
+            <td>
+                <table width="1600" align="center" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <!-- Logo/Name with Enhanced Hover -->
+                        <td>
+                            <table cellspacing="0" cellpadding="0" 
+                                   style="cursor: pointer; transition: all 0.3s ease;"
+                                   onmouseover="this.style.transform='translateY(-2px)'; 
+                                          this.querySelector('.logo-text').style.color='var(--accent)'"
+                                   onmouseout="this.style.transform='translateY(0)';
+                                         this.querySelector('.logo-text').style.color='var(--text-primary)'">
+                                <tr>
+                                    <td>
+                                        <font face="Inter, Arial" color="var(--accent)" size="4">
+                                            <strong>RJB</strong>
+                                        </font>
+                                                            </td>
+                                    <td width="20"></td>
+                        <td>
+                                        <font face="Inter, Arial">
+                                            <strong class="logo-text" 
+                                                    style="color: var(--text-primary); transition: color 0.3s ease;">
+                                                Richard J. Blackwell
+                                            </strong>
+                            </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                        <!-- Navigation Links with Active Indicators -->
+                        <td align="center">
+                            <table cellspacing="20" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <a href="#experience" 
+                                           class="nav-link"
+                                           style="color: var(--text-secondary); 
+                                                  text-decoration: none;
+                                                  padding: 8px 16px; 
+                                                      border-radius: 100px;
+                                                  transition: all 0.3s ease;
+                                                  position: relative;
+                                                  display: inline-block;
+                                                  background: var(--card-bg);"
+                                           onmouseover="this.style.background='var(--accent-transparent)';
+                                                      this.style.color='var(--accent)'"
+                                           onmouseout="this.style.background='var(--card-bg)';
+                                                     this.style.color='var(--text-secondary)'">
+                                            <font face="Inter, Arial">
+                                                <table cellspacing="5" cellpadding="0">
+                                            <tr>
+                                                <td>
+                                                            <span style="color: var(--accent)">01</span>
+                                                </td>
+                                                        <td width="8"></td>
+                                                        <td>Experience</td>
+                                            </tr>
+                                        </table>
+                                            </font>
+                                        </a>
+                                                </td>
+                                    <!-- Similar enhanced links for other sections -->
+                                    <td>
+                                        <a href="#impact" 
+                                                       class="nav-link"
+                                                       style="color: var(--text-secondary); 
+                                                              text-decoration: none;
+                                                              padding: 8px 16px; 
+                                                              border-radius: 100px;
+                                                              transition: all 0.3s ease;
+                                                              position: relative;
+                                                  display: inline-block;
+                                                  background: var(--card-bg);"
+                                           onmouseover="this.style.background='var(--accent-transparent)';
+                                                      this.style.color='var(--accent)'"
+                                           onmouseout="this.style.background='var(--card-bg)';
+                                                     this.style.color='var(--text-secondary)'">
+                                            <font face="Inter, Arial">
+                                                <table cellspacing="5" cellpadding="0">
+                                                    <tr>
+                                                        <td>
+                                                            <span style="color: var(--accent)">02</span>
+                                                        </td>
+                                                        <td width="8"></td>
+                                                        <td>Impact</td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                        <!-- Theme Toggle with Enhanced Animation -->
+                        <td align="right">
+                                        <table cellspacing="0" cellpadding="12" 
+                                               style="background: var(--card-bg);
+                                                      border-radius: 100px;
+                                                      border: 1px solid var(--border);
+                                                      cursor: pointer;
+                                                      transition: all 0.3s ease;"
+                                               onmouseover="this.style.transform='scale(1.05)'; 
+                                              this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)';
+                                              this.style.borderColor='var(--accent)'"
+                                               onmouseout="this.style.transform='scale(1)';
+                                             this.style.boxShadow='none';
+                                             this.style.borderColor='var(--border)'"
+                                               onclick="toggleTheme()">
+                                            <tr>
+                                                <td>
+                                                    <table cellspacing="8" cellpadding="0">
+                                                        <tr>
+                                                            <td>
+                                                                <span id="themeIcon" 
+                                                                      style="font-size: 18px; 
+                                                                             transition: transform 0.3s ease;">
+                                                                🌙
+                                                                </span>
+                                                            </td>
+                                                            <td width="8"></td>
+                                                            <td>
+                                                                <font face="Inter, Arial" color="var(--accent)">
+                                                                    <strong id="themeText">Dark Mode</strong>
+                                                                </font>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Navigation Tooltip Script -->
+    <script>
+    function showNavTooltip(element, text) {
+        let tooltip = document.createElement('div');
+        tooltip.className = 'nav-tooltip';
+        tooltip.style.position = 'absolute';
+        tooltip.style.background = 'var(--bg-secondary)';
+        tooltip.style.color = 'var(--text-primary)';
+        tooltip.style.padding = '8px 12px';
+        tooltip.style.borderRadius = '8px';
+        tooltip.style.fontSize = '12px';
+        tooltip.style.top = '100%';
+        tooltip.style.left = '50%';
+        tooltip.style.transform = 'translateX(-50%)';
+        tooltip.style.marginTop = '10px';
+        tooltip.style.whiteSpace = 'nowrap';
+        tooltip.style.zIndex = '1000';
+        tooltip.style.border = '1px solid var(--border)';
+        tooltip.textContent = text;
+        
+        element.appendChild(tooltip);
+    }
+
+    function hideNavTooltip(element) {
+        const tooltip = element.querySelector('.nav-tooltip');
+        if (tooltip) {
+            tooltip.remove();
+        }
+    }
+
+    // Update active section on scroll
+    document.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        let currentSection = 'Overview';
+        
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                currentSection = section.getAttribute('data-section-name');
+            }
+        });
+        
+        document.getElementById('activeSectionLabel').textContent = `Current: ${currentSection}`;
+    });
+    </script>
+
+    <!-- Spacer for Fixed Header -->
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td height="80"></td>
+        </tr>
+    </table>
+
+    <!-- Enhanced Theme Toggle Script -->
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+        // Add transition class
+        html.classList.add('theme-transition');
+        
+            // Animate icon
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+            // Fade out
+            themeIcon.classList.add('rotate');
+            themeText.classList.add('fade');
+        
+        setTimeout(() => {
+                // Update theme
+                html.setAttribute('data-theme', newTheme);
+                
+                // Update content
+            themeIcon.innerText = newTheme === 'dark' ? '🌙' : '☀️';
+            themeText.innerText = newTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            
+                // Fade in
+                setTimeout(() => {
+                    themeIcon.classList.remove('rotate');
+                    themeText.classList.remove('fade');
+                }, 50);
+            }, 300);
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        
+        // Remove transition class
+        setTimeout(() => {
+            html.classList.remove('theme-transition');
+            }, 500);
+            
+            // Add ripple effect
+            const toggle = document.querySelector('.theme-toggle');
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            toggle.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 1000);
+        }
+
+        // Initialize theme with animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+        const html = document.documentElement;
+        
+        // Set initial theme without transition
+        html.setAttribute('data-theme', savedTheme);
+        
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+        themeIcon.innerText = savedTheme === 'dark' ? '🌙' : '☀️';
+        themeText.innerText = savedTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+        
+            // Add initial animation
+        setTimeout(() => {
+                themeIcon.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    themeIcon.style.transform = 'scale(1)';
+                }, 200);
+            }, 500);
+        });
+    </script>
+
+<!-- Executive Profile Hero Section -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="80" 
+               style="background: var(--bg-secondary);">
+            <tr>
+                <!-- Executive Profile Content -->
+                <td width="60%">
+                    <font face="Helvetica Neue, Arial">
+                        <!-- Executive Status -->
+                        <table cellspacing="0" cellpadding="12" 
+                               style="background: var(--card-bg);
+                                      border-radius: 100px;
+                                      border: 1px solid var(--border);
+                                      display: inline-block;">
+                            <tr>
+                                <td>
+                                    <table cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="8" height="8" bgcolor="var(--accent)" 
+                                                style="border-radius: 50%;"></td>
+                                            <td width="10"></td>
+                                            <td>
+                                                <font color="var(--accent)" size="2">
+                                                    <strong>AVAILABLE FOR BOARD POSITIONS</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Executive Name & Title -->
+                        <h1 style="font-size: 64px; color: var(--text-primary); margin: 30px 0 20px 0; 
+                                   letter-spacing: -2px; line-height: 1.1;">
+                            Richard J. Blackwell
+                            <table cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+                                <tr>
+                                    <td>
+                                        <font size="5" color="var(--text-secondary)" 
+                                              style="letter-spacing: normal;">
+                                            Global Chief Executive Officer
+                                        </font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h1>
+
+                        <!-- Executive Summary -->
+                        <p style="color: var(--text-secondary); font-size: 20px; line-height: 1.6; 
+                                  margin: 0 0 40px 0; max-width: 600px;">
+                            Visionary leader with 20+ years driving global business transformation 
+                            and market expansion. Specialized in strategic growth, digital 
+                            innovation, and organizational excellence.
+                        </p>
+
+                        <!-- Executive Actions -->
+                        <table cellspacing="20" cellpadding="0">
+                            <tr>
+                                <td bgcolor="var(--accent)" 
+                                    style="padding: 18px 35px; border-radius: 12px;">
+                                    <font color="var(--bg-primary)">
+                                        <strong>Download Executive Bio</strong>
+                                    </font>
+                                </td>
+                                <td style="background: var(--card-bg);
+                                           padding: 18px 35px; 
+                                           border-radius: 12px;
+                                           border: 1px solid var(--border);">
+                                    <font color="var(--text-primary)">
+                                        <strong>View Leadership Journey</strong>
+                                    </font>
+                                </td>
+                            </tr>
+                        </table>
+                    </font>
+                </td>
+
+                <!-- Executive Metrics Dashboard -->
+                <td width="40%" valign="middle">
+                    <table width="100%" cellspacing="20">
+                        <!-- Metric Row 1 -->
+                        <tr>
+                            <td>
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: var(--card-bg);
+                                              border-radius: 20px;
+                                              border: 1px solid var(--border);">
+                                    <tr>
+                                        <td>
+                                            <font face="Helvetica Neue, Arial">
+                                                <table width="100%" cellspacing="0">
+                                                    <tr>
+                                                        <td>
+                                                            <h2 style="color: var(--accent); margin: 0; 
+                                                                       font-size: 42px;">$8.5B</h2>
+                                                            <p style="color: var(--text-secondary); margin: 5px 0 0 0;">
+                                                                Revenue Generated
+                                                            </p>
+                                                        </td>
+                                                        <td align="right">
+                                                            <font color="var(--accent)" size="6">📈</font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- Metric Row 2 -->
+                        <tr>
+                            <td>
+                                <table width="100%" cellspacing="20">
+                                    <tr>
+                                        <td width="50%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 20px;
+                                                          border: 1px solid rgba(255,255,255,0.1);">
+                                                <tr>
+                                                    <td>
+                                                        <font face="Helvetica Neue, Arial">
+                                                            <h2 style="color: #00FF88; margin: 0; 
+                                                                       font-size: 32px;">20K+</h2>
+                                                            <p style="color: #999999; margin: 5px 0 0 0;">
+                                                                Team Members Led
+                                                            </p>
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="50%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 20px;
+                                                          border: 1px solid rgba(255,255,255,0.1);">
+                                                <tr>
+                                                    <td>
+                                                        <font face="Helvetica Neue, Arial">
+                                                            <h2 style="color: #00FF88; margin: 0; 
+                                                                       font-size: 32px;">45+</h2>
+                                                            <p style="color: #999999; margin: 5px 0 0 0;">
+                                                                Countries
+                                                            </p>
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Professional Timeline Section -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="60" 
+               style="background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+                      border-radius: 30px; margin-top: 40px;">
+            <tr>
+                <td>
+                    <!-- Section Header -->
+                    <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 40px;">
+                        <tr>
+                            <td>
+                                <font face="Inter, Arial">
+                                    <table cellspacing="0" cellpadding="8" bgcolor="rgba(255,255,255,0.05)" 
+                                           style="border-radius: 100px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88" size="2">
+                                                    <strong>LEADERSHIP JOURNEY</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <h2 style="font-size: 36px; color: #FFFFFF; margin: 20px 0;">
+                                        Two Decades of Business Transformation
+                                    </h2>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Timeline Grid -->
+                    <table width="100%" cellspacing="30">
+                        <!-- Current Position -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">2020 - Present</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Global CEO</p>
+                                    <p style="color: #64748B; margin: 0;">TechCorp International</p>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <table width="100%" cellspacing="20">
+                                                    <tr>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">$2.5B</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Revenue Growth</p>
+                                                        </td>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">15,000+</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Global Team</p>
+                                                        </td>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">45+</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Countries</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                
+                                                <ul style="color: #94A3B8; margin: 20px 0 0 0;">
+                                                    <li>Led digital transformation initiative resulting in 300% growth</li>
+                                                    <li>Expanded operations to 15 new international markets</li>
+                                                    <li>Achieved highest employee satisfaction scores in company history</li>
+                                                </ul>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Previous Position 1 -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">2015 - 2020</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">COO</p>
+                                    <p style="color: #64748B; margin: 0;">Innovation Enterprises</p>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <table width="100%" cellspacing="20">
+                                                    <tr>
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">185%</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Efficiency Increase</p>
+                                                        </td>
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">$800M</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Cost Optimization</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                
+                                                <ul style="color: #94A3B8; margin: 20px 0 0 0;">
+                                                    <li>Spearheaded operational excellence program across 12 divisions</li>
+                                                    <li>Implemented AI-driven process automation reducing costs by 40%</li>
+                                                    <li>Led successful merger integration of $500M acquisition</li>
+                                                </ul>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Previous Position 2 -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">2010 - 2015</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">VP of Strategy</p>
+                                    <p style="color: #64748B; margin: 0;">Global Solutions Ltd</p>
+                                    
+                                    <!-- Achievement Badge -->
+                                    <table cellspacing="0" cellpadding="5" bgcolor="rgba(0,255,136,0.1)" 
+                                           style="border-radius: 12px; margin-top: 10px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88" size="2">🏆 Youngest VP in Company History</font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <!-- Key Initiatives -->
+                                                <table width="100%" cellspacing="20">
+                                                    <tr>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">$1.2B</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Strategic Deals</p>
+                                                        </td>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">25+</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Major Partnerships</p>
+                                                        </td>
+                                                        <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 15px; border-radius: 12px;">
+                                                            <h4 style="margin: 0; color: #00FF88;">3</h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">Market Expansions</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                
+                                                <!-- Strategic Achievements -->
+                                                <table width="100%" cellspacing="0" cellpadding="20" bgcolor="rgba(255,255,255,0.02)" 
+                                                       style="border-radius: 15px; margin-top: 20px;">
+                                                    <tr>
+                                                        <td>
+                                                            <p style="color: #94A3B8; margin: 0;">
+                                                                <strong style="color: #00FF88;">Key Strategic Initiatives:</strong>
+                                                            </p>
+                                                            <ul style="color: #94A3B8; margin: 10px 0 0 0;">
+                                                                <li>Developed and executed 5-year global expansion strategy</li>
+                                                                <li>Established strategic partnerships with Fortune 500 companies</li>
+                                                                <li>Led digital transformation of core business operations</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Previous Position 3 -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">2005 - 2010</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Director of Operations</p>
+                                    <p style="color: #64748B; margin: 0;">Tech Ventures Inc</p>
+                                    
+                                    <!-- Innovation Badge -->
+                                    <table cellspacing="0" cellpadding="5" bgcolor="rgba(0,255,136,0.1)" 
+                                           style="border-radius: 12px; margin-top: 10px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88" size="2">💡 Innovation Excellence Award</font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <!-- Performance Metrics -->
+                                                <table width="100%" cellspacing="20">
+                                                    <tr>
+                                                        <td bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 20px; border-radius: 12px;">
+                                                            <!-- Progress Bar -->
+                                                            <p style="color: #FFFFFF; margin: 0 0 10px 0;">Operational Efficiency</p>
+                                                            <table width="100%" cellspacing="0" bgcolor="rgba(255,255,255,0.1)" 
+                                                                   style="border-radius: 10px;">
+                                                                <tr>
+                                                                    <td width="85%" bgcolor="#00FF88" height="6" 
+                                                                        style="border-radius: 10px;"></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </table>
+                                                            <p style="color: #94A3B8; margin: 10px 0 0 0; text-align: right;">85% Improvement</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                
+                                                <!-- Key Achievements -->
+                                                <table width="100%" cellspacing="15" style="margin-top: 20px;">
+                                                    <tr>
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 20px; border-radius: 12px;">
+                                                            <h4 style="color: #00FF88; margin: 0;">Process Innovation</h4>
+                                                            <p style="color: #94A3B8; margin: 10px 0 0 0;">
+                                                                Implemented lean methodologies reducing operational costs by 40%
+                                                            </p>
+                                                        </td>
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 20px; border-radius: 12px;">
+                                                            <h4 style="color: #00FF88; margin: 0;">Team Development</h4>
+                                                            <p style="color: #94A3B8; margin: 10px 0 0 0;">
+                                                                Built and mentored high-performing teams across 5 regions
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Previous Position 4 -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">2000 - 2005</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Senior Manager</p>
+                                    <p style="color: #64748B; margin: 0;">Strategic Innovations Co</p>
+                                    
+                                    <!-- Multiple Achievement Badges -->
+                                    <table cellspacing="5" style="margin-top: 10px;">
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="5" bgcolor="rgba(0,255,136,0.1)" 
+                                                       style="border-radius: 12px;">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#00FF88" size="2">🌟 Rising Star Award</font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="5"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="5" bgcolor="rgba(0,255,136,0.1)" 
+                                                       style="border-radius: 12px;">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#00FF88" size="2">📈 Top Performer 2003-2004</font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <!-- Achievement Grid -->
+                                                <table width="100%" cellspacing="15">
+                                                    <tr>
+                                                        <!-- Achievement Card 1 -->
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 20px; border-radius: 12px;">
+                                                            <table width="100%" cellspacing="0">
+                                                                <tr>
+                                                                    <td>
+                                                                        <font color="#00FF88" size="6">📊</font>
+                                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Market Analysis</h4>
+                                                                        <p style="color: #94A3B8; margin: 0;">
+                                                                            Identified $200M+ in new market opportunities through data-driven research
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <!-- Achievement Card 2 -->
+                                                        <td width="50%" bgcolor="rgba(255,255,255,0.03)" 
+                                                            style="padding: 20px; border-radius: 12px;">
+                                                            <table width="100%" cellspacing="0">
+                                                                <tr>
+                                                                    <td>
+                                                                        <font color="#00FF88" size="6">🚀</font>
+                                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Innovation Program</h4>
+                                                                        <p style="color: #94A3B8; margin: 0;">
+                                                                            Launched company's first innovation lab and startup incubator
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <!-- Skills Development -->
+                                                <table width="100%" cellspacing="0" cellpadding="20" 
+                                                       style="margin-top: 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                                                    <tr>
+                                                        <td>
+                                                            <p style="color: #FFFFFF; margin: 0 0 15px 0;">
+                                                                <strong>Leadership Development</strong>
+                                                            </p>
+                                                            <!-- Skill Bars -->
+                                                            <table width="100%" cellspacing="10">
+                                                                <tr>
+                                                                    <td width="20%">
+                                                                        <font color="#94A3B8" size="2">Strategic Planning</font>
+                                                                    </td>
+                                                                    <td width="80%">
+                                                                        <table width="100%" cellspacing="0" bgcolor="rgba(255,255,255,0.1)" 
+                                                                               style="border-radius: 10px;">
+                                                                            <tr>
+                                                                                <td width="90%" bgcolor="#00FF88" height="4" 
+                                                                                    style="border-radius: 10px;"></td>
+                                                                                <td></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%">
+                                                                        <font color="#94A3B8" size="2">Team Leadership</font>
+                                                                    </td>
+                                                                    <td width="80%">
+                                                                        <table width="100%" cellspacing="0" bgcolor="rgba(255,255,255,0.1)" 
+                                                                               style="border-radius: 10px;">
+                                                                            <tr>
+                                                                                <td width="85%" bgcolor="#00FF88" height="4" 
+                                                                                    style="border-radius: 10px;"></td>
+                                                                                <td></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Previous Position 5 (Early Career) -->
+                        <tr>
+                            <td width="25%" valign="top">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: #00FF88; margin: 0; font-size: 24px;">1995 - 2000</h3>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Management Associate</p>
+                                    <p style="color: #64748B; margin: 0;">Global Finance Corp</p>
+                                    
+                                    <!-- Early Career Achievement -->
+                                    <table cellspacing="0" cellpadding="5" bgcolor="rgba(0,255,136,0.1)" 
+                                           style="border-radius: 12px; margin-top: 10px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88" size="2">🎓 Fast-Track Leadership Program</font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                            <td width="75%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: rgba(255,255,255,0.03);
+                                              border-radius: 20px;
+                                              border: 1px solid rgba(255,255,255,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial" color="#FFFFFF">
+                                                <!-- Early Career Highlights -->
+                                                <table width="100%" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td>
+                                                            <!-- Career Foundation Cards -->
+                                                            <table width="100%" cellspacing="15">
+                                                                <tr>
+                                                                    <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 20px; border-radius: 12px;">
+                                                                        <font color="#00FF88" size="5">📚</font>
+                                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Leadership Training</h4>
+                                                                        <p style="color: #94A3B8; margin: 0;">
+                                                                            Selected for exclusive executive development program
+                                                                        </p>
+                                                                    </td>
+                                                                    <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 20px; border-radius: 12px;">
+                                                                        <font color="#00FF88" size="5">🌏</font>
+                                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Global Exposure</h4>
+                                                                        <p style="color: #94A3B8; margin: 0;">
+                                                                            Rotations across 3 international offices
+                                                                        </p>
+                                                                    </td>
+                                                                    <td width="33%" bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 20px; border-radius: 12px;">
+                                                                        <font color="#00FF88" size="5">💡</font>
+                                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Innovation</h4>
+                                                                        <p style="color: #94A3B8; margin: 0;">
+                                                                            Led 5 strategic initiatives
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <!-- Early Achievements -->
+                                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                                   style="margin-top: 20px; border: 1px solid rgba(255,255,255,0.1); 
+                                                                          border-radius: 12px;">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #FFFFFF; margin: 0 0 15px 0;">
+                                                                            <strong>Key Early Career Achievements</strong>
+                                                                        </p>
+                                                                        <table width="100%" cellspacing="15">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <ul style="color: #94A3B8; margin: 0; padding-left: 20px;">
+                                                                                        <li>Youngest manager to lead cross-functional team</li>
+                                                                                        <li>Developed new market entry strategy for APAC region</li>
+                                                                                        <li>Recognized as "Future Leader" in annual review</li>
+                                                                                    </ul>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                            <!-- Foundation Skills -->
+                                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                                   style="margin-top: 20px; background: rgba(0,255,136,0.05); 
+                                                                          border-radius: 12px;">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #00FF88; margin: 0;">
+                                                                            <strong>Foundation for Future Success</strong>
+                                                                        </p>
+                                                                        <table width="100%" cellspacing="10" style="margin-top: 10px;">
+                                                                            <tr>
+                                                                                <td width="auto">
+                                                                                    <table cellspacing="0" cellpadding="8" 
+                                                                                           style="background: rgba(255,255,255,0.03); 
+                                                                                                  border-radius: 20px;">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <font color="#94A3B8">Strategic Thinking</font>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                                <td width="auto">
+                                                                                    <table cellspacing="0" cellpadding="8" 
+                                                                                           style="background: rgba(255,255,255,0.03); 
+                                                                                                  border-radius: 20px;">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <font color="#94A3B8">Global Mindset</font>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                                <td width="auto">
+                                                                                    <table cellspacing="0" cellpadding="8" 
+                                                                                           style="background: rgba(255,255,255,0.03); 
+                                                                                                  border-radius: 20px;">
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <font color="#94A3B8">Leadership Potential</font>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Timeline Conclusion Section -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="40" 
+               style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+                      border-radius: 30px; margin-top: 30px;">
+            <tr>
+                <td>
+                    <font face="Inter, Arial">
+                        <!-- Career Impact Summary -->
+                        <table width="100%" cellspacing="20">
+                            <tr>
+                                <td width="60%">
+                                    <h2 style="color: #FFFFFF; margin: 0; font-size: 32px;">
+                                        Career Impact Overview
+                                    </h2>
+                                    <p style="color: #94A3B8; line-height: 1.6; margin: 20px 0;">
+                                        Two decades of transformative leadership across global markets, 
+                                        driving innovation and organizational excellence through strategic vision 
+                                        and execution.
+                                    </p>
+                                </td>
+                                <td width="40%" align="right">
+                                    <table cellspacing="0" cellpadding="15" bgcolor="rgba(0,255,136,0.1)" 
+                                           style="border-radius: 15px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="5">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#00FF88" size="6">20+</font>
+                                                        </td>
+                                                        <td>
+                                                            <font color="#94A3B8">
+                                                                Years of<br>
+                                                                Leadership<br>
+                                                                Excellence
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Career Highlights Grid -->
+                        <table width="100%" cellspacing="15" style="margin-top: 20px;">
+                            <tr>
+                                <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                    style="padding: 20px; border-radius: 15px;">
+                                    <font color="#00FF88" size="6">$10B+</font>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Total Revenue Impact</p>
+                                </td>
+                                <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                    style="padding: 20px; border-radius: 15px;">
+                                    <font color="#00FF88" size="6">50K+</font>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Employees Led</p>
+                                </td>
+                                <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                    style="padding: 20px; border-radius: 15px;">
+                                    <font color="#00FF88" size="6">45+</font>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Global Markets</p>
+                                </td>
+                                <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                    style="padding: 20px; border-radius: 15px;">
+                                    <font color="#00FF88" size="6">25+</font>
+                                    <p style="color: #94A3B8; margin: 5px 0;">Major Acquisitions</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Transition to Next Section -->
+                        <table width="100%" cellspacing="0" cellpadding="30" 
+                               style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <tr>
+                                <td align="center">
+                                    <table cellspacing="0" cellpadding="15" bgcolor="rgba(0,255,136,0.1)" 
+                                           style="border-radius: 100px;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88">
+                                                    <strong>Continue to Global Impact & Board Positions →</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </font>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr> 
+
+<!-- Global Impact & Board Positions Section -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="60" 
+               style="background: var(--bg-secondary);
+                      border-radius: 30px; margin-top: 40px;">
+            <tr>
+                <td>
+                    <!-- Section Header -->
+                    <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 40px;">
+                        <tr>
+                            <td>
+                                <font face="Inter, Arial">
+                                    <table cellspacing="0" cellpadding="8" 
+                                           style="background: var(--card-bg);
+                                                  border-radius: 100px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="var(--accent)" size="2">
+                                                    <strong>GLOBAL LEADERSHIP</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <h2 style="font-size: 36px; color: var(--text-primary); margin: 20px 0;">
+                                        International Impact & Governance
+                                    </h2>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Global Impact Map -->
+                    <table width="100%" cellspacing="0" cellpadding="30" 
+                           style="background: var(--card-bg);
+                                  border-radius: 20px;
+                                  border: 1px solid var(--border);
+                                  margin-bottom: 40px;">
+                        <tr>
+                            <td>
+                                <font face="Inter, Arial">
+                                    <h3 style="color: var(--text-primary); margin: 0 0 20px 0;">
+                                        Global Market Presence
+                                    </h3>
+                                    
+                                    <!-- Region Stats Grid -->
+                                    <table width="100%" cellspacing="15">
+                                        <tr>
+                                            <!-- North America -->
+                                            <td width="25%" 
+                                                style="background: var(--card-bg);
+                                                       padding: 20px; border-radius: 12px;">
+                                                <font color="var(--accent)" size="6">🌎</font>
+                                                <h4 style="color: var(--text-primary); margin: 10px 0;">
+                                                    North America
+                                                </h4>
+                                                <table width="100%" cellspacing="5">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="var(--text-secondary)">Revenue</font>
+                                                            <h5 style="color: var(--accent); margin: 5px 0;">$3.2B</h5>
+                                                        </td>
+                                                        <td>
+                                                            <font color="var(--text-secondary)">Team</font>
+                                                            <h5 style="color: var(--accent); margin: 5px 0;">15K+</h5>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <!-- Europe -->
+                                            <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                                style="padding: 20px; border-radius: 12px;">
+                                                <font color="#00FF88" size="6">🌍</font>
+                                                <h4 style="color: #FFFFFF; margin: 10px 0;">Europe</h4>
+                                                <table width="100%" cellspacing="5">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#94A3B8">Revenue</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">$2.8B</h5>
+                                                        </td>
+                                                        <td>
+                                                            <font color="#94A3B8">Team</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">12K+</h5>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <!-- Asia Pacific -->
+                                            <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                                style="padding: 20px; border-radius: 12px;">
+                                                <font color="#00FF88" size="6">🌏</font>
+                                                <h4 style="color: #FFFFFF; margin: 10px 0;">Asia Pacific</h4>
+                                                <table width="100%" cellspacing="5">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#94A3B8">Revenue</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">$2.5B</h5>
+                                                        </td>
+                                                        <td>
+                                                            <font color="#94A3B8">Team</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">18K+</h5>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                            <!-- Emerging Markets -->
+                                            <td width="25%" bgcolor="rgba(255,255,255,0.03)" 
+                                                style="padding: 20px; border-radius: 12px;">
+                                                <font color="#00FF88" size="6">🌐</font>
+                                                <h4 style="color: #FFFFFF; margin: 10px 0;">Emerging Markets</h4>
+                                                <table width="100%" cellspacing="5">
+                                                    <tr>
+                                                        <td>
+                                                            <font color="#94A3B8">Revenue</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">$1.5B</h5>
+                                                        </td>
+                                                        <td>
+                                                            <font color="#94A3B8">Team</font>
+                                                            <h5 style="color: #00FF88; margin: 5px 0;">5K+</h5>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Board Positions and Advisory Roles Section -->
+                    <!-- Add your board positions and advisory roles here -->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr> 
+
+<!-- Board Positions and Advisory Roles -->
+<table width="100%" cellspacing="0" cellpadding="40" 
+       style="background: rgba(255,255,255,0.03);
+              border-radius: 20px;
+              border: 1px solid rgba(255,255,255,0.1);">
+    <tr>
+        <td>
+            <font face="Inter, Arial">
+                <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Board & Advisory Positions</h3>
+                
+                <!-- Current Board Positions -->
+                <table width="100%" cellspacing="20">
+                    <tr>
+                        <!-- Board Position 1 -->
+                        <td width="50%">
+                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                   style="background: rgba(0,255,136,0.05);
+                                          border-radius: 15px;
+                                          border: 1px solid rgba(0,255,136,0.1);">
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <font color="#00FF88" size="6">🏢</font>
+                                                    <h4 style="color: #FFFFFF; margin: 10px 0;">TechVision Global</h4>
+                                                    <p style="color: #94A3B8; margin: 0;">Board Member & Tech Committee Chair</p>
+                                                    <p style="color: #64748B; margin: 5px 0;">2020 - Present</p>
+                                                    
+                                                    <!-- Key Contributions -->
+                                                    <table width="100%" cellspacing="10" style="margin-top: 15px;">
+                                                        <tr>
+                                                            <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                style="padding: 8px 15px; border-radius: 8px;">
+                                                                <font color="#94A3B8" size="2">Digital Transformation</font>
+                                                            </td>
+                                                            <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                style="padding: 8px 15px; border-radius: 8px;">
+                                                                <font color="#94A3B8" size="2">Innovation Strategy</font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        
+                        <!-- Board Position 2 -->
+                        <td width="50%">
+                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                   style="background: rgba(0,255,136,0.05);
+                                          border-radius: 15px;
+                                          border: 1px solid rgba(0,255,136,0.1);">
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <font color="#00FF88" size="6">🏛️</font>
+                                                    <h4 style="color: #FFFFFF; margin: 10px 0;">Global Innovation Fund</h4>
+                                                    <p style="color: #94A3B8; margin: 0;">Advisory Board Member</p>
+                                                    <p style="color: #64748B; margin: 5px 0;">2019 - Present</p>
+                                                    
+                                                    <!-- Key Contributions -->
+                                                    <table width="100%" cellspacing="10" style="margin-top: 15px;">
+                                                        <tr>
+                                                            <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                style="padding: 8px 15px; border-radius: 8px;">
+                                                                <font color="#94A3B8" size="2">Investment Strategy</font>
+                                                            </td>
+                                                            <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                style="padding: 8px 15px; border-radius: 8px;">
+                                                                <font color="#94A3B8" size="2">Tech Ventures</font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Advisory Roles -->
+                <table width="100%" cellspacing="20" style="margin-top: 20px;">
+                    <tr>
+                        <td>
+                            <table width="100%" cellspacing="0" cellpadding="30" 
+                                   style="background: rgba(255,255,255,0.03);
+                                          border-radius: 15px;
+                                          border: 1px solid rgba(255,255,255,0.1);">
+                                <tr>
+                                    <td>
+                                        <h4 style="color: #FFFFFF; margin: 0 0 20px 0;">Strategic Advisory Roles</h4>
+                                        
+                                        <!-- Advisory Grid -->
+                                        <table width="100%" cellspacing="15">
+                                            <tr>
+                                                <!-- Role 1 -->
+                                                <td width="33%">
+                                                    <table width="100%" cellspacing="0" cellpadding="20" 
+                                                           style="background: rgba(255,255,255,0.02);
+                                                                  border-radius: 12px;">
+                                                        <tr>
+                                                            <td>
+                                                                <font color="#00FF88" size="5">🎓</font>
+                                                                <h5 style="color: #FFFFFF; margin: 10px 0;">MIT Tech Council</h5>
+                                                                <p style="color: #94A3B8; margin: 0;">Innovation Advisor</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                
+                                                <!-- Role 2 -->
+                                                <td width="33%">
+                                                    <table width="100%" cellspacing="0" cellpadding="20" 
+                                                           style="background: rgba(255,255,255,0.02);
+                                                                  border-radius: 12px;">
+                                                        <tr>
+                                                            <td>
+                                                                <font color="#00FF88" size="5">🌐</font>
+                                                                <h5 style="color: #FFFFFF; margin: 10px 0;">World Economic Forum</h5>
+                                                                <p style="color: #94A3B8; margin: 0;">Tech Pioneer</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                
+                                                <!-- Role 3 -->
+                                                <td width="33%">
+                                                    <table width="100%" cellspacing="0" cellpadding="20" 
+                                                           style="background: rgba(255,255,255,0.02);
+                                                                  border-radius: 12px;">
+                                                        <tr>
+                                                            <td>
+                                                                <font color="#00FF88" size="5">🚀</font>
+                                                                <h5 style="color: #FFFFFF; margin: 10px 0;">Startup Accelerator</h5>
+                                                                <p style="color: #94A3B8; margin: 0;">Mentor</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </font>
+        </td>
+    </tr>
+</table> 
+
+<!-- Industry Recognition & Speaking Engagements -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="60" 
+               style="background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+                      border-radius: 30px; margin-top: 40px;">
+            <tr>
+                <td>
+                    <!-- Section Header -->
+                    <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 40px;">
+                        <tr>
+                            <td>
+                                <font face="Inter, Arial">
+                                    <table cellspacing="0" cellpadding="8" bgcolor="rgba(255,255,255,0.05)" 
+                                           style="border-radius: 100px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="#00FF88" size="2">
+                                                    <strong>THOUGHT LEADERSHIP</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <h2 style="font-size: 36px; color: #FFFFFF; margin: 20px 0;">
+                                        Publications & Media Presence
+                                    </h2>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Featured Publications -->
+                    <table width="100%" cellspacing="0" cellpadding="30" 
+                           style="background: rgba(255,255,255,0.03);
+                                  border-radius: 20px;
+                                  border: 1px solid rgba(255,255,255,0.1);
+                                  margin-bottom: 40px;">
+                        <tr>
+                            <td>
+                                <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Featured Publications</h3>
+                                
+                                <!-- Publications Grid -->
+                                <table width="100%" cellspacing="20">
+                                    <!-- Publication Row 1 -->
+                                    <tr>
+                                        <td width="50%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(0,255,136,0.05);
+                                                          border-radius: 15px;
+                                                          border: 1px solid rgba(0,255,136,0.1);">
+                                                <tr>
+                                                    <td>
+                                                        <font color="#00FF88" size="6">📚</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                            The Future of Digital Leadership
+                                                        </h4>
+                                                        <p style="color: #94A3B8; margin: 5px 0;">
+                                                            Harvard Business Review
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">2023</p>
+                                                        
+                                                        <!-- Impact Metrics -->
+                                                        <table width="100%" cellspacing="10" style="margin-top: 15px;">
+                                                            <tr>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 8px 15px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">100K+ Views</font>
+                                                                </td>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 8px 15px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">Featured Article</font>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="50%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(0,255,136,0.05);
+                                                          border-radius: 15px;
+                                                          border: 1px solid rgba(0,255,136,0.1);">
+                                                <tr>
+                                                    <td>
+                                                        <font color="#00FF88" size="6">📱</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                            The Future of Tech Leadership
+                                                        </h4>
+                                                        <p style="color: #94A3B8; margin: 5px 0;">
+                                                            MIT Technology Review Press
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">2022</p>
+                                                        
+                                                        <!-- Book Impact -->
+                                                        <table width="100%" cellspacing="15" style="margin-top: 15px;">
+                                                            <tr>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">
+                                                                        100K+ Copies Sold
+                                                                    </font>
+                                                                </td>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">
+                                                                        Industry Reference
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Media Coverage -->
+                    <table width="100%" cellspacing="20">
+                        <tr>
+                            <td>
+                                <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Recent Media Coverage</h3>
+                                
+                                <!-- Media Grid -->
+                                <table width="100%" cellspacing="15">
+                                    <!-- Media Row -->
+                                    <tr>
+                                        <!-- CNBC Interview -->
+                                        <td width="33.33%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(255,255,255,0.02);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td>
+                                                        <font color="#00FF88" size="6">📺</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">CNBC Interview</h4>
+                                                        <p style="color: #94A3B8; margin: 0;">
+                                                            Future of Tech Leadership
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">Dec 2023</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        
+                                        <!-- Bloomberg Feature -->
+                                        <td width="33.33%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(255,255,255,0.02);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td>
+                                                        <font color="#00FF88" size="6">🌐</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Bloomberg Feature</h4>
+                                                        <p style="color: #94A3B8; margin: 0;">
+                                                            Digital Transformation
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">Nov 2023</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        
+                                        <!-- Forbes Profile -->
+                                        <td width="33.33%">
+                                            <table width="100%" cellspacing="0" cellpadding="25" 
+                                                   style="background: rgba(255,255,255,0.02);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td>
+                                                        <font color="#00FF88" size="6">📰</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">Forbes Profile</h4>
+                                                        <p style="color: #94A3B8; margin: 0;">
+                                                            Innovation Leaders
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">Oct 2023</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Additional Media Appearances -->
+                    <table width="100%" cellspacing="15">
+                        <!-- Media Row 3 -->
+                        <tr>
+                            <!-- TED Talk -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="25" 
+                                       style="background: rgba(255,255,255,0.02);
+                                              border-radius: 15px;">
+                                    <tr>
+                                        <td>
+                                            <table width="100%" cellspacing="0">
+                                                <tr>
+                                                    <td width="70%">
+                                                        <font color="#00FF88" size="6">🎯</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                            TED Global Conference
+                                                        </h4>
+                                                        <p style="color: #94A3B8; margin: 5px 0;">
+                                                            Reimagining Business in the Digital Age
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">
+                                                            Keynote Speaker, December 2023
+                                                        </p>
+                                                        <!-- View Stats -->
+                                                        <table cellspacing="10" style="margin-top: 10px;">
+                                                            <tr>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 5px 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">2M+ Views</font>
+                                                                </td>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 5px 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">Featured Talk</font>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="30%" align="right">
+                                                        <table cellspacing="0" cellpadding="12" 
+                                                               bgcolor="rgba(0,255,136,0.1)" 
+                                                               style="border-radius: 100px;">
+                                                            <tr>
+                                                                <td>
+                                                                    <font color="#00FF88">
+                                                                        <strong>Watch Talk →</strong>
+                                                                    </font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <!-- Industry Panel -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="25" 
+                                       style="background: rgba(255,255,255,0.02);
+                                              border-radius: 15px;">
+                                    <tr>
+                                        <td>
+                                            <table width="100%" cellspacing="0">
+                                                <tr>
+                                                    <td width="70%">
+                                                        <font color="#00FF88" size="6">🌟</font>
+                                                        <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                            World Economic Forum
+                                                        </h4>
+                                                        <p style="color: #94A3B8; margin: 5px 0;">
+                                                            Future of Technology Leadership Panel
+                                                        </p>
+                                                        <p style="color: #64748B; margin: 5px 0;">
+                                                            Panel Moderator, January 2024
+                                                        </p>
+                                                        <!-- Event Details -->
+                                                        <table cellspacing="10" style="margin-top: 10px;">
+                                                            <tr>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 5px 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">Davos 2024</font>
+                                                                </td>
+                                                                <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                    style="padding: 5px 10px; border-radius: 8px;">
+                                                                    <font color="#94A3B8" size="2">Global Broadcast</font>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="30%" align="right">
+                                                        <table cellspacing="0" cellpadding="12" 
+                                                               bgcolor="rgba(0,255,136,0.1)" 
+                                                               style="border-radius: 100px;">
+                                                            <tr>
+                                                                <td>
+                                                                    <font color="#00FF88">
+                                                                        <strong>View Panel →</strong>
+                                                                    </font>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Thought Leadership Metrics -->
+                    <table width="100%" cellspacing="0" cellpadding="40" 
+                           style="margin-top: 40px; background: rgba(0,255,136,0.05);
+                                  border-radius: 20px; border: 1px solid rgba(0,255,136,0.1);">
+                        <tr>
+                            <td>
+                                <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Global Influence Metrics</h3>
+                                
+                                <!-- Metrics Grid -->
+                                <table width="100%" cellspacing="20">
+                                    <tr>
+                                        <td width="25%">
+                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td align="center">
+                                                        <font color="#00FF88" size="6">500K+</font>
+                                                        <p style="color: #94A3B8; margin: 10px 0;">
+                                                            LinkedIn Followers
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="25%">
+                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td align="center">
+                                                        <font color="#00FF88" size="6">50+</font>
+                                                        <p style="color: #94A3B8; margin: 10px 0;">
+                                                            Speaking Events
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="25%">
+                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td align="center">
+                                                        <font color="#00FF88" size="6">100+</font>
+                                                        <p style="color: #94A3B8; margin: 10px 0;">
+                                                            Media Features
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="25%">
+                                            <table width="100%" cellspacing="0" cellpadding="20" 
+                                                   style="background: rgba(255,255,255,0.03);
+                                                          border-radius: 15px;">
+                                                <tr>
+                                                    <td align="center">
+                                                        <font color="#00FF88" size="6">25+</font>
+                                                        <p style="color: #94A3B8; margin: 10px 0;">
+                                                            Industry Awards
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr> 
+
+<!-- Publications & Media Coverage Continued -->
+<table width="100%" cellspacing="20">
+    <!-- Featured Books & Publications -->
+    <tr>
+        <td>
+            <table width="100%" cellspacing="0" cellpadding="30" 
+                   style="background: rgba(255,255,255,0.03);
+                          border-radius: 20px;
+                          border: 1px solid rgba(255,255,255,0.1);">
+                <tr>
+                    <td>
+                        <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Published Works</h3>
+                        
+                        <!-- Books Grid -->
+                        <table width="100%" cellspacing="20">
+                            <!-- Book 1 -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="25" 
+                                       style="background: rgba(0,255,136,0.05);
+                                              border-radius: 15px;
+                                              border: 1px solid rgba(0,255,136,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font color="#00FF88" size="6">📖</font>
+                                            <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                Digital Transformation: A Leader's Guide
+                                            </h4>
+                                            <p style="color: #94A3B8; margin: 5px 0;">
+                                                Published by Harvard Business Press
+                                            </p>
+                                            <p style="color: #64748B; margin: 5px 0;">2023</p>
+                                            
+                                            <!-- Book Impact -->
+                                            <table width="100%" cellspacing="15" style="margin-top: 15px;">
+                                                <tr>
+                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                        style="padding: 10px; border-radius: 8px;">
+                                                        <font color="#94A3B8" size="2">
+                                                            #1 Business Bestseller
+                                                        </font>
+                                                    </td>
+                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                        style="padding: 10px; border-radius: 8px;">
+                                                        <font color="#94A3B8" size="2">
+                                                            12 Languages
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <!-- Book 2 -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="25" 
+                                       style="background: rgba(0,255,136,0.05);
+                                              border-radius: 15px;
+                                              border: 1px solid rgba(0,255,136,0.1);">
+                                    <tr>
+                                        <td>
+                                            <font color="#00FF88" size="6">📱</font>
+                                            <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                The Future of Tech Leadership
+                                            </h4>
+                                            <p style="color: #94A3B8; margin: 5px 0;">
+                                                MIT Technology Review Press
+                                            </p>
+                                            <p style="color: #64748B; margin: 5px 0;">2022</p>
+                                            
+                                            <!-- Book Impact -->
+                                            <table width="100%" cellspacing="15" style="margin-top: 15px;">
+                                                <tr>
+                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                        style="padding: 10px; border-radius: 8px;">
+                                                        <font color="#94A3B8" size="2">
+                                                            100K+ Copies Sold
+                                                        </font>
+                                                    </td>
+                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                        style="padding: 10px; border-radius: 8px;">
+                                                        <font color="#94A3B8" size="2">
+                                                            Industry Reference
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- Recent Media Appearances -->
+    <tr>
+        <td>
+            <table width="100%" cellspacing="0" cellpadding="30" 
+                   style="background: rgba(255,255,255,0.03);
+                          border-radius: 20px;
+                          border: 1px solid rgba(255,255,255,0.1);
+                          margin-top: 20px;">
+                <tr>
+                    <td>
+                        <h3 style="color: #FFFFFF; margin: 0 0 30px 0;">Media Presence</h3>
+                        
+                        <!-- Media Grid -->
+                        <table width="100%" cellspacing="15">
+                            <!-- Featured Interview -->
+                            <tr>
+                                <td>
+                                    <table width="100%" cellspacing="0" cellpadding="25" 
+                                           style="background: rgba(0,255,136,0.05);
+                                                  border-radius: 15px;
+                                                  border: 1px solid rgba(0,255,136,0.1);">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellspacing="0">
+                                                    <tr>
+                                                        <td width="70%">
+                                                            <font color="#00FF88" size="6">📺</font>
+                                                            <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                                The Future of Enterprise Technology
+                                                            </h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">
+                                                                In-depth interview on CNBC's Tech Leaders
+                                                            </p>
+                                                            <p style="color: #64748B; margin: 5px 0;">
+                                                                Featured Interview, March 2024
+                                                            </p>
+                                                        </td>
+                                                        <td width="30%" align="right">
+                                                            <table cellspacing="0" cellpadding="12" 
+                                                                   bgcolor="rgba(0,255,136,0.1)" 
+                                                                   style="border-radius: 100px;">
+                                                                <tr>
+                                                                    <td>
+                                                                        <font color="#00FF88">
+                                                                            <strong>Watch Now →</strong>
+                                                                        </font>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Additional Media Appearances -->
+                        <table width="100%" cellspacing="15">
+                            <!-- Media Row 4 -->
+                            <tr>
+                                <!-- Harvard Business Review Podcast -->
+                                <td width="50%">
+                                    <table width="100%" cellspacing="0" cellpadding="25" 
+                                           style="background: rgba(255,255,255,0.02);
+                                                  border-radius: 15px;">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellspacing="0">
+                                                    <tr>
+                                                        <td width="70%">
+                                                            <font color="#00FF88" size="6">🎙️</font>
+                                                            <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                                HBR IdeaCast
+                                                            </h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">
+                                                                Leading Digital Transformation at Scale
+                                                            </p>
+                                                            <p style="color: #64748B; margin: 5px 0;">
+                                                                Featured Episode, February 2024
+                                                            </p>
+                                                            <!-- Episode Stats -->
+                                                            <table cellspacing="10" style="margin-top: 10px;">
+                                                                <tr>
+                                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 5px 10px; border-radius: 8px;">
+                                                                        <font color="#94A3B8" size="2">500K+ Listens</font>
+                                                                    </td>
+                                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 5px 10px; border-radius: 8px;">
+                                                                        <font color="#94A3B8" size="2">Most Popular Episode</font>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td width="30%" align="right">
+                                                            <table cellspacing="0" cellpadding="12" 
+                                                                   bgcolor="rgba(0,255,136,0.1)" 
+                                                                   style="border-radius: 100px;">
+                                                                <tr>
+                                                                    <td>
+                                                                        <font color="#00FF88">
+                                                                            <strong>Listen Now →</strong>
+                                                                        </font>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <!-- Financial Times Feature -->
+                                <td width="50%">
+                                    <table width="100%" cellspacing="0" cellpadding="25" 
+                                           style="background: rgba(255,255,255,0.02);
+                                                  border-radius: 15px;">
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellspacing="0">
+                                                    <tr>
+                                                        <td width="70%">
+                                                            <font color="#00FF88" size="6">📰</font>
+                                                            <h4 style="color: #FFFFFF; margin: 10px 0;">
+                                                                Financial Times
+                                                            </h4>
+                                                            <p style="color: #94A3B8; margin: 5px 0;">
+                                                                The New Era of Tech Leadership
+                                                            </p>
+                                                            <p style="color: #64748B; margin: 5px 0;">
+                                                                Cover Story, January 2024
+                                                            </p>
+                                                            <!-- Article Impact -->
+                                                            <table cellspacing="10" style="margin-top: 10px;">
+                                                                <tr>
+                                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 5px 10px; border-radius: 8px;">
+                                                                        <font color="#94A3B8" size="2">Global Feature</font>
+                                                                    </td>
+                                                                    <td bgcolor="rgba(255,255,255,0.03)" 
+                                                                        style="padding: 5px 10px; border-radius: 8px;">
+                                                                        <font color="#94A3B8" size="2">Most Shared Article</font>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td width="30%" align="right">
+                                                            <table cellspacing="0" cellpadding="12" 
+                                                                   bgcolor="rgba(0,255,136,0.1)" 
+                                                                   style="border-radius: 100px;">
+                                                                <tr>
+                                                                    <td>
+                                                                        <font color="#00FF88">
+                                                                            <strong>Read Article →</strong>
+                                                                        </font>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<!-- Contact & Engagement Section -->
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="60" 
+               style="background: var(--bg-secondary);
+                      border-radius: 30px; margin-top: 40px;">
+            <tr>
+                <td>
+                    <!-- Section Header -->
+                    <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 40px;">
+                        <tr>
+                            <td align="center">
+                                <font face="Inter, Arial">
+                                    <table cellspacing="0" cellpadding="8" 
+                                           style="background: var(--card-bg);
+                                                  border-radius: 100px; display: inline-block;">
+                                        <tr>
+                                            <td>
+                                                <font color="var(--accent)" size="2">
+                                                    <strong>GET IN TOUCH</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <h2 style="font-size: 36px; color: var(--text-primary); margin: 20px 0;">
+                                        Let's Connect
+                                    </h2>
+                                    
+                                    <p style="color: var(--text-secondary); font-size: 18px; 
+                                              max-width: 600px; margin: 0 auto;">
+                                        Available for board positions, speaking engagements, 
+                                        and strategic advisory roles.
+                                    </p>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Contact Options -->
+                    <table width="100%" cellspacing="30">
+                        <tr>
+                            <!-- Executive Assistant -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: var(--card-bg);
+                                              border-radius: 20px;
+                                              border: 1px solid var(--border);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial">
+                                                <font color="var(--accent)" size="6">👤</font>
+                                                <h3 style="color: var(--text-primary); margin: 15px 0;">
+                                                    Executive Contact
+                                                </h3>
+                                                <p style="color: var(--text-secondary); margin: 0;">
+                                                    Sarah Johnson<br>
+                                                    Executive Assistant
+                                                </p>
+                                                <table cellspacing="10" style="margin-top: 20px;">
+                                                    <tr>
+                                                        <td bgcolor="var(--accent)" 
+                                                            style="padding: 12px 25px; border-radius: 100px;">
+                                                            <a href="mailto:executive@blackwell.com" 
+                                                               style="color: var(--bg-primary); text-decoration: none;">
+                                                                <strong>Schedule Meeting →</strong>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <!-- Media Inquiries -->
+                            <td width="50%">
+                                <table width="100%" cellspacing="0" cellpadding="30" 
+                                       style="background: var(--card-bg);
+                                              border-radius: 20px;
+                                              border: 1px solid var(--border);">
+                                    <tr>
+                                        <td>
+                                            <font face="Inter, Arial">
+                                                <font color="var(--accent)" size="6">📱</font>
+                                                <h3 style="color: var(--text-primary); margin: 15px 0;">
+                                                    Media Relations
+                                                </h3>
+                                                <p style="color: var(--text-secondary); margin: 0;">
+                                                    Michael Chen<br>
+                                                    Head of Communications
+                                                </p>
+                                                <table cellspacing="10" style="margin-top: 20px;">
+                                                    <tr>
+                                                        <td bgcolor="var(--accent)" 
+                                                            style="padding: 12px 25px; border-radius: 100px;">
+                                                            <a href="mailto:press@blackwell.com" 
+                                                               style="color: var(--bg-primary); text-decoration: none;">
+                                                                <strong>Media Contact →</strong>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Social Presence -->
+                    <table width="100%" cellspacing="0" cellpadding="40" 
+                           style="margin-top: 30px; background: var(--card-bg);
+                                  border-radius: 20px; border: 1px solid var(--border);">
+                        <tr>
+                            <td align="center">
+                                <font face="Inter, Arial">
+                                    <h3 style="color: var(--text-primary); margin: 0 0 20px 0;">
+                                        Connect on Social
+                                    </h3>
+                                    <table cellspacing="20">
+                                        <tr>
+                                            <td>
+                                                <a href="https://linkedin.com/in/richardblackwell" 
+                                                   style="color: var(--accent); text-decoration: none;">
+                                                    LinkedIn
+                                                </a>
+                                            </td>
+                                            <td>•</td>
+                                            <td>
+                                                <a href="https://twitter.com/rjblackwell" 
+                                                   style="color: var(--accent); text-decoration: none;">
+                                                    Twitter
+                                                </a>
+                                            </td>
+                                            <td>•</td>
+                                            <td>
+                                                <a href="https://medium.com/@richardblackwell" 
+                                                   style="color: var(--accent); text-decoration: none;">
+                                                    Medium
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Floating Action Menu -->
+<table style="position: fixed; bottom: 40px; right: 40px; z-index: 1000;">
+    <tr>
+        <td>
+            <table cellspacing="10">
+                <tr>
+                    <td>
+                        <!-- Quick Actions Menu -->
+                        <table cellspacing="0" cellpadding="15" 
+                               style="background: var(--bg-secondary);
+                                      border-radius: 20px;
+                                      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                                      border: 1px solid var(--border);">
+                            <tr>
+                                <td>
+                                    <table cellspacing="10">
+                                        <!-- Download CV -->
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="12" 
+                                                       style="background: var(--card-bg);
+                                                              border-radius: 12px;
+                                                              cursor: pointer;
+                                                              transition: all 0.3s ease;"
+                                                       onmouseover="this.style.background='var(--accent-transparent)'"
+                                                       onmouseout="this.style.background='var(--card-bg)'">
+                                                    <tr>
+                                                        <td>
+                                                            <font face="Inter, Arial" color="var(--accent)">
+                                                                <table cellspacing="8">
+                                                                    <tr>
+                                                                        <td>📄</td>
+                                                                        <td>Download CV</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        
+                                        <!-- Schedule Meeting -->
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="12" 
+                                                       style="background: var(--card-bg);
+                                                              border-radius: 12px;
+                                                              cursor: pointer;
+                                                              transition: all 0.3s ease;"
+                                                       onmouseover="this.style.background='var(--accent-transparent)'"
+                                                       onmouseout="this.style.background='var(--card-bg)'">
+                                                    <tr>
+                                                        <td>
+                                                            <font face="Inter, Arial" color="var(--accent)">
+                                                                <table cellspacing="8">
+                                                                    <tr>
+                                                                        <td>📅</td>
+                                                                        <td>Schedule Meeting</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Quick Contact -->
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="12" 
+                                                       style="background: var(--card-bg);
+                                                              border-radius: 12px;
+                                                              cursor: pointer;
+                                                              transition: all 0.3s ease;"
+                                                       onmouseover="this.style.background='var(--accent-transparent)'"
+                                                       onmouseout="this.style.background='var(--card-bg)'">
+                                                    <tr>
+                                                        <td>
+                                                            <font face="Inter, Arial" color="var(--accent)">
+                                                                <table cellspacing="8">
+                                                                    <tr>
+                                                                        <td>✉️</td>
+                                                                        <td>Quick Contact</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Back to Top -->
+                                        <tr>
+                                            <td>
+                                                <table cellspacing="0" cellpadding="12" 
+                                                       style="background: var(--accent);
+                                                              border-radius: 12px;
+                                                              cursor: pointer;
+                                                              transition: all 0.3s ease;"
+                                                       onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                                                    <tr>
+                                                        <td>
+                                                            <font face="Inter, Arial" color="var(--bg-primary)">
+                                                                <table cellspacing="8">
+                                                                    <tr>
+                                                                        <td>⬆️</td>
+                                                                        <td>Back to Top</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<!-- Progress Indicator -->
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
+<div class="progress-stats">
+    <span id="progress-percentage">0%</span> viewed
+</div>
+
+<script>
+    // Progress Bar Implementation
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        
+        const progress = (scrolled / documentHeight) * 100;
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercentage = document.getElementById('progress-percentage');
+        
+        progressBar.style.width = `${progress}%`;
+        progressPercentage.textContent = `${Math.round(progress)}%`;
+
+        // Add glow effect when making progress
+        if (progress > 0) {
+            progressBar.style.boxShadow = `0 0 10px var(--accent)`;
+        } else {
+            progressBar.style.boxShadow = 'none';
+        }
+
+        // Highlight progress stats on milestones
+        const progressStats = document.querySelector('.progress-stats');
+        if (progress >= 25 && progress < 50) {
+            progressStats.style.background = 'var(--accent-transparent)';
+        } else if (progress >= 50 && progress < 75) {
+            progressStats.style.background = 'var(--accent-transparent)';
+            progressStats.style.transform = 'scale(1.1)';
+        } else if (progress >= 75) {
+            progressStats.style.background = 'var(--accent)';
+            progressStats.style.color = 'var(--bg-primary)';
+        } else {
+            progressStats.style.background = 'var(--bg-secondary)';
+            progressStats.style.transform = 'scale(1)';
+            progressStats.style.color = 'var(--text-secondary)';
+        }
+    });
+
+    // Add section tracking
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionName = entry.target.getAttribute('data-section-name');
+                document.querySelector('.progress-stats').setAttribute(
+                    'title', 
+                    `Currently viewing: ${sectionName}`
+                );
+            }
+        });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+</script>
+
+<!-- Scroll to Top Button -->
+<table style="position: fixed; bottom: 40px; right: 40px; z-index: 1000; opacity: 0; 
+              transition: all 0.3s ease;" id="scrollTopBtn">
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="15" 
+                   style="background: var(--accent);
+                          border-radius: 100px;
+                          cursor: pointer;
+                          transition: all 0.3s ease;"
+                   onclick="scrollToTop()"
+                   onmouseover="this.style.transform='scale(1.1)';
+                              this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)'"
+                   onmouseout="this.style.transform='scale(1)';
+                             this.style.boxShadow='none'">
+                <tr>
+                    <td>
+                        <font face="Inter, Arial" color="var(--bg-primary)">
+                            <table cellspacing="5" cellpadding="0">
+                                <tr>
+                                    <td>⬆️</td>
+                                    <td width="5"></td>
+                                    <td><strong>Top</strong></td>
+                                </tr>
+                            </table>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<script>
+// Scroll to Top Implementation
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.transform = 'translateY(0)';
+    } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.transform = 'translateY(20px)';
+    }
+});
+
+function scrollToTop() {
+    const scrollDuration = 500; // Duration in milliseconds
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    
+    const scrollInterval = setInterval(() => {
+        if (window.scrollY !== 0) {
+            window.scrollBy(0, scrollStep);
+        } else {
+            clearInterval(scrollInterval);
+        }
+    }, 15);
+}
+
+    // Add scroll progress indicator
+    const progressBar = document.createElement('div');
+    progressBar.style.position = 'fixed';
+    progressBar.style.top = '0';
+    progressBar.style.left = '0';
+    progressBar.style.width = '0%';
+    progressBar.style.height = '3px';
+    progressBar.style.background = 'var(--accent)';
+    progressBar.style.transition = 'width 0.2s ease';
+    progressBar.style.zIndex = '1001';
+
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+        
+        // Add glow effect when scrolling
+        if (scrolled > 0) {
+            progressBar.style.boxShadow = '0 0 10px var(--accent)';
+        } else {
+            progressBar.style.boxShadow = 'none';
+        }
+    });
+}
+</script>
+
+<script>
+    // Enhanced Active Section Detection
+    const updateActiveSection = () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const link = navLinks[index];
+            
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                link.classList.add('active');
+                // Add subtle scale effect
+                link.style.transform = 'scale(1.05)';
+            } else {
+                link.classList.remove('active');
+                link.style.transform = 'scale(1)';
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection(); // Initial call
+</script>
+
+<!-- Section Indicator -->
+<table style="position: fixed; left: 40px; top: 50%; transform: translateY(-50%); z-index: 1000;">
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="15" 
+                   style="background: var(--bg-secondary);
+                          border-radius: 20px;
+                          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                          border: 1px solid var(--border);">
+                <tr>
+                    <td>
+                        <table cellspacing="10">
+                            <!-- Experience Section -->
+                            <tr>
+                                <td>
+                                    <table cellspacing="0" cellpadding="12" 
+                                           class="section-indicator"
+                                           data-section="experience"
+                                           style="background: var(--card-bg);
+                                                  border-radius: 12px;
+                                                  cursor: pointer;
+                                                  transition: all 0.3s ease;">
+                                        <tr>
+                                            <td>
+                                                <font face="Inter, Arial" color="var(--text-secondary)">
+                                                    <table cellspacing="8">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="width: 8px; height: 8px; 
+                                                                          border-radius: 50%;
+                                                                          background: var(--text-secondary);
+                                                                          transition: all 0.3s ease;"
+                                                                     class="section-dot"></div>
+                                                            </td>
+                                                            <td width="8"></td>
+                                                            <td>Experience</td>
+                                                        </tr>
+                                                    </table>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- Impact Section -->
+                            <tr>
+                                <td>
+                                    <table cellspacing="0" cellpadding="12" 
+                                           class="section-indicator"
+                                           data-section="impact"
+                                           style="background: var(--card-bg);
+                                                  border-radius: 12px;
+                                                  cursor: pointer;
+                                                  transition: all 0.3s ease;">
+                                        <tr>
+                                            <td>
+                                                <font face="Inter, Arial" color="var(--text-secondary)">
+                                                    <table cellspacing="8">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="width: 8px; height: 8px; 
+                                                                          border-radius: 50%;
+                                                                          background: var(--text-secondary);
+                                                                          transition: all 0.3s ease;"
+                                                                     class="section-dot"></div>
+                                                            </td>
+                                                            <td width="8"></td>
+                                                            <td>Impact</td>
+                                                        </tr>
+                                                    </table>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- Publications Section -->
+                            <tr>
+                                <td>
+                                    <table cellspacing="0" cellpadding="12" 
+                                           class="section-indicator"
+                                           data-section="publications"
+                                           style="background: var(--card-bg);
+                                                  border-radius: 12px;
+                                                  cursor: pointer;
+                                                  transition: all 0.3s ease;">
+                                        <tr>
+                                            <td>
+                                                <font face="Inter, Arial" color="var(--text-secondary)">
+                                                    <table cellspacing="8">
+                                                        <tr>
+                                                            <td>
+                                                                <div style="width: 8px; height: 8px; 
+                                                                          border-radius: 50%;
+                                                                          background: var(--text-secondary);
+                                                                          transition: all 0.3s ease;"
+                                                                     class="section-dot"></div>
+                                                            </td>
+                                                            <td width="8"></td>
+                                                            <td>Publications</td>
+                                                        </tr>
+                                                    </table>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<script>
+// Section Indicator Implementation
+const updateSectionIndicators = () => {
+    const sections = document.querySelectorAll('section');
+    const indicators = document.querySelectorAll('.section-indicator');
+    
+    sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const indicator = indicators[index];
+        const dot = indicator.querySelector('.section-dot');
+        
+        if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
+            indicator.style.background = 'var(--accent-transparent)';
+            dot.style.background = 'var(--accent)';
+            dot.style.transform = 'scale(1.5)';
+        } else {
+            indicator.style.background = 'var(--card-bg)';
+            dot.style.background = 'var(--text-secondary)';
+            dot.style.transform = 'scale(1)';
+        }
+    });
+};
+
+window.addEventListener('scroll', updateSectionIndicators);
+updateSectionIndicators();
+</script>
+
+<script>
+// Timeline Interaction Enhancement
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineCards = document.querySelectorAll('.timeline-card');
+    const metricCards = document.querySelectorAll('.metric-card');
+    
+    // Add classes for styling
+    timelineCards.forEach(card => {
+        card.classList.add('timeline-card');
+        const yearLabel = card.querySelector('h3');
+        if (yearLabel) yearLabel.classList.add('year-label');
+        
+        const achievementList = card.querySelector('ul');
+        if (achievementList) achievementList.classList.add('achievement-list');
+    });
+    
+    metricCards.forEach(card => {
+        card.classList.add('metric-card');
+        const value = card.querySelector('h4');
+        if (value) value.classList.add('metric-value');
+    });
+    
+    // Active section detection
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '-50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('active');
+            }
+        });
+    }, observerOptions);
+    
+    timelineCards.forEach(card => observer.observe(card));
+});
+</script>
+
+<!-- Collapsible Quick Navigation Menu -->
+<table id="quickNavMenu" style="position: fixed; right: 40px; bottom: 40px; z-index: 1000;">
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="15" 
+                   style="background: var(--bg-secondary);
+                          border-radius: 20px;
+                          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                          border: 1px solid var(--border);">
+                <tr>
+                    <td>
+                        <!-- Close Button -->
+                        <table width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                            <tr>
+                                <td align="right">
+                                    <table cellspacing="0" cellpadding="8" 
+                                           style="cursor: pointer; border-radius: 50%;
+                                                  transition: all 0.3s ease;"
+                                           onclick="toggleQuickNav()"
+                                           onmouseover="this.style.background='var(--accent-transparent)'"
+                                           onmouseout="this.style.background='transparent'">
+                                        <tr>
+                                            <td>
+                                                <font face="Inter, Arial" color="var(--accent)">
+                                                    <strong>×</strong>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Menu Items -->
+                        <div id="quickNavContent">
+                            <table cellspacing="10">
+                                <!-- Menu items here (your existing menu items) -->
+                                                    </table>
+                        </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+</table>
+
+<!-- Toggle Button (appears when menu is closed) -->
+<table id="quickNavToggle" 
+       style="position: fixed; right: 40px; bottom: 40px; z-index: 1000; display: none;">
+                            <tr>
+                                <td>
+            <table cellspacing="0" cellpadding="15" 
+                                           style="background: var(--accent);
+                          border-radius: 100px;
+                                                  cursor: pointer;
+                                                  transition: all 0.3s ease;"
+                   onclick="toggleQuickNav()"
+                   onmouseover="this.style.transform='scale(1.1)'"
+                   onmouseout="this.style.transform='scale(1)'">
+                                        <tr>
+                                            <td>
+                                                <font face="Inter, Arial" color="var(--bg-primary)">
+                            <strong>Menu</strong>
+                                                </font>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<script>
+// Quick Navigation Toggle
+function toggleQuickNav() {
+    const menu = document.getElementById('quickNavMenu');
+    const toggle = document.getElementById('quickNavToggle');
+    const content = document.getElementById('quickNavContent');
+    
+    if (menu.style.display !== 'none') {
+        // Close menu
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            menu.style.display = 'none';
+            toggle.style.display = 'block';
+            toggle.style.opacity = '0';
+            toggle.style.transform = 'scale(0.8)';
+            
+            requestAnimationFrame(() => {
+                toggle.style.opacity = '1';
+                toggle.style.transform = 'scale(1)';
+            });
+        }, 300);
+    } else {
+        // Open menu
+        toggle.style.display = 'none';
+        menu.style.display = 'block';
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(20px)';
+        
+        requestAnimationFrame(() => {
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+        });
+    }
+}
+
+// Add transition styles to the content
+document.getElementById('quickNavContent').style.transition = 'all 0.3s ease';
+</script>
+
+<script>
+// Combined Section Observer
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Handle section visibility
+            entry.target.classList.add('visible');
+            
+            // Handle section name updates
+            const sectionName = entry.target.getAttribute('data-section-name');
+            if (sectionName) {
+                document.querySelector('.progress-stats').setAttribute(
+                    'title', 
+                    `Currently viewing: ${sectionName}`
+                );
+            }
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+// Apply observers to sections
+document.querySelectorAll('section').forEach(section => {
+    section.classList.add('section-transition');
+    sectionObserver.observe(section);
+});
+</script>
+
+<script>
+// Scroll to Top Implementation
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.transform = 'translateY(0)';
+    } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.transform = 'translateY(20px)';
+    }
+});
+
+function scrollToTop() {
+    const scrollDuration = 500;
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    
+    const scrollInterval = setInterval(() => {
+        if (window.scrollY !== 0) {
+            window.scrollBy(0, scrollStep);
+        } else {
+            clearInterval(scrollInterval);
+        }
+    }, 15);
+}
+
+// Add scroll progress indicator
+const progressBar = document.createElement('div');
+progressBar.style.position = 'fixed';
+progressBar.style.top = '0';
+progressBar.style.left = '0';
+progressBar.style.width = '0%';
+progressBar.style.height = '3px';
+progressBar.style.background = 'var(--accent)';
+progressBar.style.transition = 'width 0.2s ease';
+progressBar.style.zIndex = '1001';
+
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
+    
+    // Add glow effect when scrolling
+    if (scrolled > 0) {
+        progressBar.style.boxShadow = '0 0 10px var(--accent)';
+    } else {
+        progressBar.style.boxShadow = 'none';
+    }
+});
+</script>
